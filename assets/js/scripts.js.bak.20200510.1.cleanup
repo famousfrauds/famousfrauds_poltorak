@@ -1,0 +1,116 @@
+
+/*
+function jumpToSubSection(sectionId) {
+  if (PAGE_REF == "index" &&
+    $(`#${sectionId}`).length > 0) {
+
+      // activate sub-section
+      activateSubSection(sectionId);
+
+      // scroll to sub-section
+      scrollToSubSection(sectionId)
+  }
+}
+*/
+
+/*
+function activateSubSection(sectionId) {
+  let $subSectionNavItem = $(`#menu_${sectionId}`);
+  if ($subSectionNavItem.length > 0) {
+    $('nav').find('.active').removeClass('active');
+    $subSectionNavItem.addClass('active');
+  }
+}
+*/
+
+/*
+function scrollToSubSection(sectionId) {
+  $('html, body').animate({
+    scrollTop: $(`#${sectionId}`).offset().top - 100
+  }, 500);
+}
+*/
+
+$(function() {
+
+  /*
+  let anchor = $(location).attr('hash');
+  if (anchor) {
+    let sectionId = anchor.slice(1);
+
+    if (PAGE_REF == "index" &&
+      $(`#${sectionId}`).length > 0) {
+
+        // activate sub-section
+        activateSubSection(sectionId);
+
+        // scroll to sub-section
+        scrollToSubSection(sectionId)
+    }
+  }
+  */
+
+  // mobile menu toggler
+  let body = document.querySelector('body')
+  let menuTrigger = document.querySelector('#toggle-menu-mobile');
+  let menuContainer = document.querySelector('#menu-mobile');
+  if (typeof(menuTrigger) != 'undefined' && menuTrigger != null) {
+    menuTrigger.onclick = function() {
+      menuContainer.classList.toggle('open');
+      menuTrigger.classList.toggle('is-active')
+      body.classList.toggle('lock-scroll')
+    }
+  }
+
+  // solution toggler
+  let solutionsContainer = document.querySelector('#solutions-container');
+  let solutionSelectedTrigger = document.querySelector('#toggle-solution-selected');
+  let solutionSelectedContainer = document.querySelector('#solution-selected');
+  if (typeof(solutionSelectedTrigger) != 'undefined' && solutionSelectedTrigger != null) {
+    solutionSelectedTrigger.onclick = function() {
+      solutionsContainer.classList.toggle('solution-selected');
+      solutionSelectedContainer.classList.toggle('open');
+    }
+  }
+
+  // faq toggler
+  let faqsContainer = document.querySelector('#solution-faqs');
+  if (typeof(faqsContainer) != 'undefined' && faqsContainer != null) {
+    let solutionFAQs = $('#solution-faqs');
+    $("#solution-faqs div .question").on('click', function(e) {
+
+      let answerEl = $(this).parent('div').children('.answer')[0];
+      if ($(answerEl).hasClass('active')) {
+        $(answerEl).removeClass('active');
+      } else {
+        $(solutionFAQs).find('.active').removeClass('active');
+        $(this).parent('div').children('.answer').addClass('active');
+      }
+
+      if ($(this).hasClass('active')) {
+        $(this).removeClass('active');
+      } else {
+        $(this).addClass('active');
+      }
+
+    });
+  }
+
+  // back to top
+  let backToTop = $('#back-to-top');
+  $(window).scroll(function() {
+    if ($(window).scrollTop() > 250) {
+      backToTop.addClass('show');
+    } else {
+      backToTop.removeClass('show');
+    }
+  });
+
+  backToTop.on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: 0
+    }, '500');
+  });
+
+});

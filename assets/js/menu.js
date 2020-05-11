@@ -1,0 +1,1 @@
+$(function(){let e=document.querySelector("body"),o=document.querySelector("#toggle-menu-mobile"),l=document.querySelector("#menu-mobile");void 0!==o&&null!=o&&(o.onclick=function(){l.classList.toggle("open"),o.classList.toggle("is-active"),e.classList.toggle("lock-scroll")})});
