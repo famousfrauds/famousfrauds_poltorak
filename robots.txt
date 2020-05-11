@@ -1,1 +1,1 @@
-Sitemap: https://www.famousfrauds.com/sitemap.xml
+Sitemap: http://poltorak.famousfrauds.com/sitemap.xml
